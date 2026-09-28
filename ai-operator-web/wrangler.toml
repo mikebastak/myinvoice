@@ -1,0 +1,28 @@
+name = "ai-operator-web"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+preview_urls = false
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+html_handling = "none"
+not_found_handling = "none"
+
+[[rules]]
+type = "Data"
+globs = ["**/*.pdf"]
+fallthrough = false
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-operator-db"
+database_id = "891c9861-a3ed-4a46-8673-0a25582696c8"
+migrations_dir = "migrations"
+
+[observability]
+enabled = true
+
+# Secret (never commit): ADMIN_TOKEN – set via `npx wrangler secret put ADMIN_TOKEN`

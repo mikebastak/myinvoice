@@ -1,0 +1,15 @@
+{
+  "name": "ai-operator-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Operátor pro e-shop – landing page, opt-in a PDF lead magnet (Cloudflare Workers + D1)",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "pdf": "python3 tools/build_pdf.py"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "wrangler": "^4.43.0"
+  }
+}

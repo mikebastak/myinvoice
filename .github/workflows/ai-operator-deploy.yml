@@ -1,0 +1,116 @@
+name: AI Operátor – deploy na Cloudflare
+
+on:
+  push:
+    branches: [claude/deploy-ai-operator-cloudflare-947czt]
+    paths:
+      - 'ai-operator-web/**'
+      - '.github/workflows/ai-operator-deploy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ai-operator-deploy
+  cancel-in-progress: false
+
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  D1_NAME: ai-operator-db
+  D1_ID: 891c9861-a3ed-4a46-8673-0a25582696c8
+  TEST_EMAIL: test+deploy@okenergo.cz
+
+jobs:
+  deploy:
+    name: Deploy + smoke test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ai-operator-web
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Kontrola secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::Chybí repo secret CLOUDFLARE_API_TOKEN (Settings → Secrets and variables → Actions)."
+            echo "❌ Chybí repo secret **CLOUDFLARE_API_TOKEN**." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: ai-operator-web/package-lock.json
+
+      - name: npm ci
+        run: npm ci --no-audit --no-fund
+
+      - name: Ověření D1 (existence + schéma, bez migrací)
+        run: |
+          npx wrangler d1 list --json > "$RUNNER_TEMP/d1.json"
+          if ! jq -e --arg id "$D1_ID" --arg n "$D1_NAME" '.[] | select(.uuid == $id and .name == $n)' "$RUNNER_TEMP/d1.json" > /dev/null; then
+            echo "::error::D1 $D1_NAME s ID $D1_ID na účtu není."
+            exit 1
+          fi
+          npx wrangler d1 execute "$D1_NAME" --remote --json \
+            --command "SELECT name FROM sqlite_master WHERE type='table' AND name IN ('subscribers','downloads')" > "$RUNNER_TEMP/tables.json"
+          n=$(jq '[.[0].results[].name] | length' "$RUNNER_TEMP/tables.json")
+          if [ "$n" != 2 ]; then
+            echo "::error::V D1 chybí tabulky subscribers/downloads (nalezeno $n). Migrace se v CI záměrně nespouští."
+            exit 1
+          fi
+          echo "✅ D1 $D1_NAME ($D1_ID) existuje, schéma OK" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: wrangler deploy
+        run: |
+          npx wrangler deploy 2>&1 | tee "$RUNNER_TEMP/deploy.log"
+          url=$(grep -oE 'https://ai-operator-web\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1)
+          if [ -z "$url" ]; then
+            echo "::error::Z výstupu deploye nešlo vyčíst workers.dev URL (je na účtu zapnutý workers.dev subdomain?)."
+            exit 1
+          fi
+          echo "PROD_URL=$url" >> "$GITHUB_ENV"
+          echo "🚀 Produkce: $url" >> "$GITHUB_STEP_SUMMARY"
+          echo "PROD_URL: $url"
+
+      - name: ADMIN_TOKEN (nový, šifrovaně do logu)
+        run: |
+          TOKEN=$(openssl rand -hex 32)
+          echo "::add-mask::$TOKEN"
+          printf '%s' "$TOKEN" | npx wrangler secret put ADMIN_TOKEN
+          printf '%s' "$TOKEN" > "$RUNNER_TEMP/admin_token"
+          chmod 600 "$RUNNER_TEMP/admin_token"
+          # Token je zašifrovaný veřejným klíčem; dešifrovat ho jde jen soukromým klíčem mimo repo.
+          enc=$(printf '%s' "$TOKEN" | openssl pkeyutl -encrypt -pubin -inkey deploy/admin-token.pub.pem \
+                -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 | base64 -w0)
+          echo "ENCRYPTED_ADMIN_TOKEN: $enc"
+
+      - name: Čekání na propagaci
+        run: |
+          for i in $(seq 1 30); do
+            [ "$(curl -s --max-time 10 "$PROD_URL/api/health")" = '{"ok":true}' ] && exit 0
+            sleep 3
+          done
+          echo "::warning::/api/health neodpovídá ok ani po 90 s"
+
+      - name: Smoke test produkce
+        run: |
+          sleep 10  # secret put vytvoří novou verzi – chvíli trvá rozšíření
+          ADMIN_TOKEN="$(cat "$RUNNER_TEMP/admin_token")" deploy/smoke-test.sh "$PROD_URL"
+
+      - name: Smazání testovacího kontaktu
+        if: always() && env.PROD_URL != ''
+        run: |
+          npx wrangler d1 execute "$D1_NAME" --remote --command \
+            "DELETE FROM downloads WHERE subscriber_id IN (SELECT id FROM subscribers WHERE email LIKE 'test+deploy@%'); DELETE FROM subscribers WHERE email LIKE 'test+deploy@%'"
+          left=$(npx wrangler d1 execute "$D1_NAME" --remote --json \
+            --command "SELECT COUNT(*) AS n FROM subscribers WHERE email LIKE 'test+deploy@%'" | jq '.[0].results[0].n')
+          echo "🧹 Testovací kontakt smazán (zbývá: $left)" >> "$GITHUB_STEP_SUMMARY"
+          [ "$left" = 0 ]
