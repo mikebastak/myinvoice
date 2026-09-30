@@ -70,6 +70,7 @@ jobs:
 
       - name: wrangler deploy
         run: |
+          set -o pipefail
           npx wrangler deploy 2>&1 | tee "$RUNNER_TEMP/deploy.log"
           url=$(grep -oE 'https://ai-operator-web\.[a-z0-9-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1)
           if [ -z "$url" ]; then
