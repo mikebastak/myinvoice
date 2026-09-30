@@ -3,101 +3,166 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
 <title>15 promptů na produktové popisy a překlady | AI Operátor pro e-shop</title>
 <meta name="description" content="Hotové AI prompty pro české e-shopy na Shoptetu, BaseLinkeru a Allegru: názvy z feedu dodavatele, popisy, SEO, překlady do SK a PL. Zdarma v PDF.">
 <meta property="og:title" content="15 promptů na produktové popisy a překlady">
 <meta property="og:description" content="Z feedu dodavatele hotový produkt za minutu. Zdarma v PDF.">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#F3F0E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<link rel="preload" href="/fonts/instrument-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="/">AI Operátor pro e-shop</a></div></header>
-<main>
-<div class="wrap hero">
-  <h1>Z feedu dodavatele hotový produkt za minutu</h1>
-  <p class="lead">15 promptů, které používám na reálném e-shopu: název, popis, SEO, parametry a překlad do slovenštiny a polštiny. Zdarma v PDF.</p>
-  <div class="transform" aria-label="Ukázka: surová data od dodavatele a výsledek po zpracování promptem">
-    <div class="pane raw"><span class="tag">Přišlo od dodavatele</span>SVITIDLO LED PANEL 600X600 40W 4000K IP20 BILY RAM PODHLED. VCETNE ZDROJE!!</div>
-    <div class="arrow" aria-hidden="true">→</div>
-    <div class="pane after"><span class="tag">Po promptech 1, 2 a 7</span>
-      <strong>LED panel 600 × 600 mm – 40 W, neutrální bílá 4000 K</strong>
-      Podhledové svítidlo do kanceláří a chodeb s bílým rámem. Zdroj je součástí balení, montáž bez dalších dílů.
-      <ul><li>Rozměr pro standardní rastrový podhled</li><li>Krytí IP20 pro suché vnitřní prostory</li></ul>
-      <div class="langs">SK: LED panel 600 × 600 mm – 40 W, neutrálna biela · PL: Panel LED 600×600 40W 4000K do sufitu podwieszanego</div>
-    </div>
-  </div>
-  <a class="cta" href="#stahnout">Chci 15 promptů zdarma</a>
-  <p class="note">PDF, 6 stran. Funguje s ChatGPT, Claude i Gemini.</p>
-</div>
-
-<section>
+<header class="top">
   <div class="wrap">
-    <h2>Co v PDF najdeš</h2>
-    <p>Každý prompt má pravidla, která AI brání vymýšlet parametry. Výstup jde rovnou importovat.</p>
-    <ol class="list">
-      <li>Čistý název produktu z feedu dodavatele</li>
-      <li>Krátký popis do výpisu kategorie</li>
-      <li>Dlouhý popis v HTML se strukturou</li>
-      <li>Tabulka parametrů z chaotického textu</li>
-      <li>SEO title a meta description</li>
-      <li>Překlad do slovenštiny s glosářem</li>
-      <li>Překlad do polštiny pro Allegro</li>
-      <li>Kontrola kvality překladu</li>
-      <li>Popis kategorie pro SEO</li>
-      <li>FAQ z dotazů zákazníků</li>
-      <li>Srovnání variant produktu</li>
-      <li>Alt texty obrázků</li>
-      <li>Sjednocení tónu v celém katalogu</li>
-      <li>Hromadné zpracování přes CSV</li>
-      <li>Kontrolní checklist před importem</li>
+    <a class="brand" href="/"><span class="mark" aria-hidden="true">AO</span>AI Operátor</a>
+    <nav><a href="#stahnout">Stáhnout PDF →</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow mono reveal d1"><span>Zdarma</span><span>PDF · 6 stran</span><span>ChatGPT · Claude · Gemini</span></div>
+      <h1 class="reveal d2">Z feedu dodavatele <span class="serif">hotový produkt</span> za minutu.</h1>
+      <p class="lead reveal d3">15 promptů, které používám na reálném e-shopu: název, popis, SEO, parametry a překlad do slovenštiny a polštiny.</p>
+      <div class="actions reveal d4">
+        <a class="cta" href="#stahnout">Chci 15 promptů <span class="arr" aria-hidden="true">→</span></a>
+        <p class="note">Bez vymýšlení parametrů. Výstup jde rovnou do importu.</p>
+      </div>
+    </div>
+
+    <figure class="panel reveal d3" aria-label="Ukázka: surová data od dodavatele a výsledek po zpracování prompty">
+      <div class="panel-bar mono"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>feed_dodavatel.csv → import.csv</span></div>
+      <div class="raw">
+        <span class="mono">Přišlo od dodavatele</span>
+        <code>SVITIDLO LED PANEL 600X600 40W 4000K IP20 BILY RAM PODHLED. VCETNE ZDROJE!!</code>
+      </div>
+      <div class="steps mono">Prompty <b>01</b> <b>02</b> <b>07</b></div>
+      <dl class="out">
+        <div><dt>Název</dt><dd><strong>LED panel 600 × 600 mm – 40 W, neutrální bílá 4000 K</strong></dd></div>
+        <div><dt>Popis</dt><dd>Podhledové svítidlo do kanceláří a chodeb s bílým rámem. Zdroj je součástí balení.</dd></div>
+        <div><dt>Parametry</dt><dd><ul><li>Rozměr pro rastrový podhled</li><li>Krytí IP20, suché vnitřní prostory</li></ul></dd></div>
+        <div><dt>SK</dt><dd>LED panel 600 × 600 mm – 40 W, neutrálna biela</dd></div>
+        <div><dt>PL</dt><dd>Panel LED 600×600 40W 4000K do sufitu podwieszanego</dd></div>
+      </dl>
+    </figure>
+  </div>
+</section>
+
+<section class="facts" aria-label="V číslech">
+  <div class="wrap">
+    <div class="fact"><b>15</b><span>promptů na celý produktový workflow</span></div>
+    <div class="fact"><b>3 trhy</b><span>CZ, SK a PL včetně Allegra</span></div>
+    <div class="fact"><b>1 pravidlo</b><span>AI nesmí nic doplnit ani vymyslet</span></div>
+    <div class="fact"><b>0 Kč</b><span>PDF ke stažení hned po vyplnění</span></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="mono">Obsah PDF</span>
+        <h2>Každý krok od feedu <span class="serif">po import.</span></h2>
+      </div>
+      <p>Každý prompt má pravidla, která AI brání vymýšlet parametry. U každého je napsané, kdy ho použít, a místa pro vaše data.</p>
+    </div>
+    <ol class="index">
+      <li><span class="n">01</span><span class="t">Čistý název produktu z feedu dodavatele</span><span class="tag">Katalog</span></li>
+      <li><span class="n">02</span><span class="t">Krátký popis do výpisu kategorie</span><span class="tag">Katalog</span></li>
+      <li><span class="n">03</span><span class="t">Dlouhý popis v HTML se strukturou</span><span class="tag">Katalog</span></li>
+      <li><span class="n">04</span><span class="t">Tabulka parametrů z chaotického textu</span><span class="tag">Data</span></li>
+      <li><span class="n">05</span><span class="t">SEO title a meta description</span><span class="tag">SEO</span></li>
+      <li><span class="n">06</span><span class="t">Překlad do slovenštiny s glosářem</span><span class="tag">Překlad</span></li>
+      <li><span class="n">07</span><span class="t">Překlad do polštiny pro Allegro</span><span class="tag">Překlad</span></li>
+      <li><span class="n">08</span><span class="t">Kontrola kvality překladu</span><span class="tag">Kontrola</span></li>
+      <li><span class="n">09</span><span class="t">Popis kategorie pro SEO</span><span class="tag">SEO</span></li>
+      <li><span class="n">10</span><span class="t">FAQ z dotazů zákazníků</span><span class="tag">Obsah</span></li>
+      <li><span class="n">11</span><span class="t">Srovnání variant produktu</span><span class="tag">Obsah</span></li>
+      <li><span class="n">12</span><span class="t">Alt texty obrázků</span><span class="tag">SEO</span></li>
+      <li><span class="n">13</span><span class="t">Sjednocení tónu v celém katalogu</span><span class="tag">Katalog</span></li>
+      <li><span class="n">14</span><span class="t">Hromadné zpracování přes CSV</span><span class="tag">Hromadně</span></li>
+      <li><span class="n">15</span><span class="t">Kontrolní checklist před importem</span><span class="tag">Kontrola</span></li>
     </ol>
   </div>
 </section>
 
-<section>
-  <div class="wrap who">
+<section class="pipe" aria-label="Doporučený postup">
+  <div class="wrap">
+    <span class="mono lbl">Doporučený postup pro nový produkt</span>
+    <ol class="flow">
+      <li>Feed</li><li class="x" aria-hidden="true">→</li>
+      <li><small>01</small>Název</li><li class="x" aria-hidden="true">→</li>
+      <li><small>04</small>Parametry</li><li class="x" aria-hidden="true">→</li>
+      <li><small>02</small><small>03</small>Popisy</li><li class="x" aria-hidden="true">→</li>
+      <li><small>05</small>SEO</li><li class="x" aria-hidden="true">→</li>
+      <li><small>06</small><small>07</small>SK · PL</li><li class="x" aria-hidden="true">→</li>
+      <li><small>08</small>Kontrola</li><li class="x" aria-hidden="true">→</li>
+      <li><small>15</small>Checklist</li><li class="x" aria-hidden="true">→</li>
+      <li class="end">Import</li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap author">
     <div>
-      <h2>Kdo za tím je</h2>
-      <p>Jsem Michal Bašta. Řídím provoz e-shopu na Shoptetu napojeného na BaseLinker a Allegro a AI používám každý den: popisy, překlady, feedy dodavatelů, ceny a sklad.</p>
-      <p>Neprodávám teorii. Sdílím postupy, které mi v provozu ušetřily stovky hodin.</p>
+      <p class="quote">Neprodávám teorii. Sdílím postupy, které mi v provozu <em>ušetřily stovky hodin.</em></p>
+      <div class="by"><span class="av" aria-hidden="true">MB</span><div><b>Michal Bašta</b><span>provoz e-shopu · Shoptet, BaseLinker, Allegro</span></div></div>
     </div>
-    <div>
-      <h2>Pro koho to je</h2>
+    <div class="who">
+      <h3>Pro koho to je</h3>
       <p>Pro majitele a správce českých e-shopů s desítkami až tisíci produktů, kteří nechtějí psát každý popis ručně a chystají se prodávat na Slovensko nebo do Polska.</p>
+      <p>AI používám každý den na popisy, překlady, feedy dodavatelů, ceny a sklad.</p>
+      <div class="chips"><span>Shoptet</span><span>BaseLinker</span><span>Allegro</span><span>Heureka</span></div>
     </div>
   </div>
 </section>
 
-<section id="stahnout">
-  <div class="wrap">
-    <div class="form-box">
-      <h2>Stáhni si PDF zdarma</h2>
-      <form id="optin" method="post" action="/api/subscribe" novalidate>
-        <div>
-          <label for="name">Křestní jméno</label>
-          <input id="name" name="name" type="text" autocomplete="given-name" maxlength="80">
-        </div>
-        <div>
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required maxlength="254">
-        </div>
-        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
-        <div class="hp" aria-hidden="true"><label for="website">Web</label><input id="website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
-        <label class="check"><input type="checkbox" name="consent" required> <span>Souhlasím se zasíláním e-mailů s tipy a nabídkami produktů AI Operátor od OK ENERGO s.r.o. Odhlásit se lze jedním kliknutím v každém e-mailu. Podrobnosti v&nbsp;<a href="/zasady-ochrany-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</span></label>
-        <button type="submit">Stáhnout PDF</button>
-        <div class="msg" id="msg" role="status" aria-live="polite" hidden></div>
-      </form>
+<section class="optin" id="stahnout">
+  <div class="wrap optin-grid">
+    <div>
+      <span class="mono">PDF zdarma</span>
+      <h2>Stáhni si <span class="serif">15 promptů</span></h2>
+      <ul>
+        <li>Hotové prompty ke zkopírování</li>
+        <li>Pravidla proti vymýšlení parametrů</li>
+        <li>Postup pro hromadné zpracování přes CSV</li>
+        <li>Checklist před importem do e-shopu</li>
+      </ul>
     </div>
+    <form id="optin" method="post" action="/api/subscribe" novalidate>
+      <div class="field">
+        <label for="name">Křestní jméno</label>
+        <input id="name" name="name" type="text" autocomplete="given-name" maxlength="80" placeholder="Jana">
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="jana@vas-eshop.cz">
+      </div>
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+      <div class="hp" aria-hidden="true"><label for="website">Web</label><input id="website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
+      <label class="check"><input type="checkbox" name="consent" required> <span>Souhlasím se zasíláním e-mailů s tipy a nabídkami produktů AI Operátor od OK ENERGO s.r.o. Odhlásit se lze jedním kliknutím v každém e-mailu. Podrobnosti v&nbsp;<a href="/zasady-ochrany-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</span></label>
+      <button type="submit">Stáhnout PDF <span class="arr" aria-hidden="true">↓</span></button>
+      <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
+    </form>
   </div>
 </section>
 </main>
+
 <footer>
   <div class="wrap">
-    <p>Provozovatel: OK ENERGO s.r.o., IČO 27141829, DIČ CZ27141829, Pod Hájem 668, 252 66 Libčice nad Vltavou, zapsaná v obchodním rejstříku vedeném [DOPLNIT: soud, oddíl C, vložka]. Kontakt: [DOPLNIT e-mail]. <a href="/obchodni-podminky.html">Obchodní podmínky</a> · <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a></p>
-    <p>Shoptet, BaseLinker a Allegro jsou ochranné známky svých vlastníků. Tento web s nimi není nijak propojen.</p>
+    <div>
+      <p>Provozovatel: OK ENERGO s.r.o., IČO 27141829, DIČ CZ27141829, Pod Hájem 668, 252 66 Libčice nad Vltavou, zapsaná v obchodním rejstříku vedeném [DOPLNIT: soud, oddíl C, vložka]. Kontakt: [DOPLNIT e-mail].</p>
+      <p>Shoptet, BaseLinker a Allegro jsou ochranné známky svých vlastníků. Tento web s nimi není nijak propojen.</p>
+    </div>
+    <nav><a href="/obchodni-podminky.html">Obchodní podmínky</a><a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a></nav>
   </div>
 </footer>
 <script src="/app.js" defer></script>

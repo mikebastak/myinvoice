@@ -7,6 +7,11 @@ on:
       - 'ai-operator-web/**'
       - '.github/workflows/ai-operator-deploy.yml'
   workflow_dispatch:
+    inputs:
+      rotate_admin_token:
+        description: 'Vygenerovat nový ADMIN_TOKEN (starý přestane platit)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -81,8 +86,13 @@ jobs:
           echo "🚀 Produkce: $url" >> "$GITHUB_STEP_SUMMARY"
           echo "PROD_URL: $url"
 
-      - name: ADMIN_TOKEN (nový, šifrovaně do logu)
+      - name: ADMIN_TOKEN (nový jen při rotaci nebo když chybí; šifrovaně do logu)
         run: |
+          if [ "${{ inputs.rotate_admin_token }}" != "true" ] && npx wrangler secret list --format json | jq -e '.[] | select(.name == "ADMIN_TOKEN")' > /dev/null; then
+            echo "ADMIN_TOKEN už existuje – ponechávám (rotace: Run workflow → rotate_admin_token)."
+            echo "🔑 ADMIN_TOKEN beze změny" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           TOKEN=$(openssl rand -hex 32)
           echo "::add-mask::$TOKEN"
           printf '%s' "$TOKEN" | npx wrangler secret put ADMIN_TOKEN
@@ -103,8 +113,9 @@ jobs:
 
       - name: Smoke test produkce
         run: |
-          sleep 10  # secret put vytvoří novou verzi – chvíli trvá rozšíření
-          ADMIN_TOKEN="$(cat "$RUNNER_TEMP/admin_token")" deploy/smoke-test.sh "$PROD_URL"
+          sleep 10  # nová verze Workeru – chvíli trvá rozšíření
+          if [ -f "$RUNNER_TEMP/admin_token" ]; then export ADMIN_TOKEN="$(cat "$RUNNER_TEMP/admin_token")"; fi
+          deploy/smoke-test.sh "$PROD_URL"
 
       - name: Smazání testovacího kontaktu
         if: always() && env.PROD_URL != ''

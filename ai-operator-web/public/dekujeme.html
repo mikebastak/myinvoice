@@ -3,28 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Děkujeme | AI Operátor pro e-shop</title>
 <meta name="robots" content="noindex">
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="/">AI Operátor pro e-shop</a></div></header>
+<header class="top"><div class="wrap"><a class="brand" href="/"><span class="mark" aria-hidden="true">AO</span>AI Operátor</a><nav><a href="/#stahnout">Stáhnout PDF →</a></nav></div></header>
 <main>
-<div class="wrap hero">
-  <h1>Díky, PDF je tvoje</h1>
+<div class="wrap page">
+  <span class="mono eyebrow"><span>Hotovo</span></span>
+  <h1>Díky, PDF je <span class="serif">tvoje.</span></h1>
   <p class="lead">Stáhni si 15 promptů na produktové popisy a překlady. Odkaz je jen pro tebe, nesdílej ho.</p>
-  <a class="cta" id="dl" href="#" hidden>Stáhnout PDF (6 stran)</a>
+  <div class="actions">
+    <a class="cta" id="dl" href="#" hidden>Stáhnout PDF <span class="arr" aria-hidden="true">↓</span></a>
+    <p class="note">6 stran · 15 promptů · CZ, SK, PL</p>
+  </div>
   <p class="msg" id="bad" hidden>Odkaz ke stažení je neplatný. <a href="/#stahnout">Vyplň formulář znovu</a>.</p>
-  <p class="note">Tip: začni promptem 1 na deseti produktech a porovnej výsledek s tím, co máš teď na e-shopu.</p>
+  <ol class="flow next">
+    <li><small>1</small>Stáhni PDF</li><li class="x" aria-hidden="true">→</li>
+    <li><small>2</small>Prompt 01 na 10 produktech</li><li class="x" aria-hidden="true">→</li>
+    <li><small>3</small>Porovnej s aktuálním e-shopem</li><li class="x" aria-hidden="true">→</li>
+    <li class="end">Hromadně přes prompt 14</li>
+  </ol>
 </div>
 </main>
 <footer>
   <div class="wrap">
-    <p>Provozovatel: OK ENERGO s.r.o., IČO 27141829, DIČ CZ27141829, Pod Hájem 668, 252 66 Libčice nad Vltavou, zapsaná v obchodním rejstříku vedeném [DOPLNIT: soud, oddíl C, vložka]. Kontakt: [DOPLNIT e-mail]. <a href="/obchodni-podminky.html">Obchodní podmínky</a> · <a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a></p>
-    <p>Shoptet, BaseLinker a Allegro jsou ochranné známky svých vlastníků. Tento web s nimi není nijak propojen.</p>
+    <div>
+      <p>Provozovatel: OK ENERGO s.r.o., IČO 27141829, DIČ CZ27141829, Pod Hájem 668, 252 66 Libčice nad Vltavou, zapsaná v obchodním rejstříku vedeném [DOPLNIT: soud, oddíl C, vložka]. Kontakt: [DOPLNIT e-mail].</p>
+      <p>Shoptet, BaseLinker a Allegro jsou ochranné známky svých vlastníků. Tento web s nimi není nijak propojen.</p>
+    </div>
+    <nav><a href="/obchodni-podminky.html">Obchodní podmínky</a><a href="/zasady-ochrany-osobnich-udaju.html">Ochrana osobních údajů</a></nav>
   </div>
 </footer>
 <script src="/dekujeme.js" defer></script>

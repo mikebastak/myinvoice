@@ -10,6 +10,8 @@ Cloudflare Worker (statické assety + API) nad D1 `ai-operator-db`.
 | `GET /api/download?t=<token>` | PDF (`application/pdf`), zapíše řádek do `downloads` |
 | `GET /api/admin/export.csv` | CSV kontaktů; `Authorization: Bearer <ADMIN_TOKEN>` nebo v prohlížeči Basic auth (jméno libovolné, heslo = token) |
 
+Design: Instrument Sans / Instrument Serif / JetBrains Mono (OFL), self-hosted v `public/fonts` – žádné volání Google Fonts.
+
 Bezpečnost: CSP bez inline skriptů/stylů, `no-referrer` (token z URL neuteče), honeypot, ochrana proti CSV injection,
 porovnání admin tokenu v konstantním čase, PDF není veřejný asset (je zabalené ve Workeru).
 
@@ -19,7 +21,7 @@ Automaticky přes GitHub Actions (`.github/workflows/ai-operator-deploy.yml`) p�
 nebo ručně (Run workflow). Potřebné repo secrets: `CLOUDFLARE_API_TOKEN` (šablona *Edit Cloudflare Workers*
 + Account › D1 › Edit), volitelně `CLOUDFLARE_ACCOUNT_ID`.
 
-Workflow: ověří D1 a schéma (migrace nespouští) → `wrangler deploy` → vygeneruje nový `ADMIN_TOKEN`
+Workflow: ověří D1 a schéma (migrace nespouští) → `wrangler deploy` → `ADMIN_TOKEN` ponechá (nový jen když chybí nebo při ručním spuštění s `rotate_admin_token`)
 a nastaví ho jako secret (do logu jde jen zašifrovaný veřejným klíčem `deploy/admin-token.pub.pem`)
 → smoke test (`deploy/smoke-test.sh`) → smaže testovací kontakt.
 
