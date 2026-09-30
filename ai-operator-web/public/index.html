@@ -8,150 +8,191 @@
 <meta property="og:title" content="15 promptů na produktové popisy a překlady">
 <meta property="og:description" content="Z feedu dodavatele hotový produkt za minutu. Zdarma v PDF.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#F3F0E8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
-<link rel="preload" href="/fonts/instrument-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0A0918">
+<link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/styles.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-import" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 14h8M8 17h5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 2 4 14h7l-1.5 8L19 10h-7z"/></symbol>
+</svg>
+
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="/"><span class="mark" aria-hidden="true">AO</span>AI Operátor</a>
-    <nav><a href="#stahnout">Stáhnout PDF →</a></nav>
+    <a class="brand" href="/"><span class="mark"><svg><use href="#i-bolt"/></svg></span>AI Operátor</a>
+    <nav>
+      <a href="#obsah">Co je uvnitř</a>
+      <a href="#postup">Jak to funguje</a>
+      <a href="#autor">Autor</a>
+      <a class="btn btn-primary" href="#stahnout">Stáhnout zdarma</a>
+    </nav>
   </div>
 </header>
 
 <main>
 <section class="hero">
+  <div class="grid-bg" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow mono reveal d1"><span>Zdarma</span><span>PDF · 6 stran</span><span>ChatGPT · Claude · Gemini</span></div>
-      <h1 class="reveal d2">Z feedu dodavatele <span class="serif">hotový produkt</span> za minutu.</h1>
-      <p class="lead reveal d3">15 promptů, které používám na reálném e-shopu: název, popis, SEO, parametry a překlad do slovenštiny a polštiny.</p>
-      <div class="actions reveal d4">
-        <a class="cta" href="#stahnout">Chci 15 promptů <span class="arr" aria-hidden="true">→</span></a>
-        <p class="note">Bez vymýšlení parametrů. Výstup jde rovnou do importu.</p>
+      <div class="pill rise d1"><b>ZDARMA</b> PDF s 15 prompty pro e-shopy</div>
+      <h1 class="rise d2">Z feedu dodavatele <span class="grad-text">hotový produkt</span> za minutu</h1>
+      <p class="lead rise d3">Prompty, které používám na reálném e-shopu: název, popis, SEO, parametry a překlad do slovenštiny a polštiny. Bez vymýšlení parametrů, rovnou pro import.</p>
+      <div class="actions rise d4">
+        <a class="btn btn-primary" href="#stahnout">Chci 15 promptů zdarma <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#obsah">Co je uvnitř</a>
+      </div>
+      <div class="trust rise d5">
+        <span><svg><use href="#i-check"/></svg>ChatGPT, Claude i Gemini</span>
+        <span><svg><use href="#i-check"/></svg>CZ · SK · PL</span>
+        <span><svg><use href="#i-check"/></svg>6 stran, hned ke stažení</span>
       </div>
     </div>
 
-    <figure class="panel reveal d3" aria-label="Ukázka: surová data od dodavatele a výsledek po zpracování prompty">
-      <div class="panel-bar mono"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>feed_dodavatel.csv → import.csv</span></div>
-      <div class="raw">
-        <span class="mono">Přišlo od dodavatele</span>
-        <code>SVITIDLO LED PANEL 600X600 40W 4000K IP20 BILY RAM PODHLED. VCETNE ZDROJE!!</code>
+    <div class="mock-wrap rise d3" role="img" aria-label="Ukázka: z řádku feedu dodavatele vznikne hotová produktová karta ve třech jazycích">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i><span>AI Operátor · import produktů</span></div>
+        <div class="mock-body">
+          <div class="feed"><small><span>Feed dodavatele</span><span>řádek 1 / 248</span></small><code>SVITIDLO LED PANEL 600X600 40W 4000K IP20 BILY RAM PODHLED. VCETNE ZDROJE!!</code></div>
+          <div class="run"><span>Prompty 01 · 02 · 07</span><span class="bar"><i></i></span><span>hotovo</span></div>
+          <div class="product">
+            <div class="thumb"><svg viewBox="0 0 64 64" fill="none" stroke="#7B5CFF" stroke-width="2.5"><rect x="8" y="8" width="48" height="48" rx="4"/><rect x="15" y="15" width="34" height="34" rx="2" fill="#fff" stroke="#FF4F9A"/><path d="M32 15v34M15 32h34" stroke="#FF4F9A" stroke-opacity=".35"/></svg></div>
+            <div>
+              <h4>LED panel 600 × 600 mm – 40 W, neutrální bílá 4000 K</h4>
+              <p>Podhledové svítidlo do kanceláří a chodeb. Zdroj je součástí balení.</p>
+              <div class="tags"><span>40 W</span><span>4000 K</span><span>IP20</span><span>600 × 600 mm</span></div>
+            </div>
+          </div>
+          <div class="langs">
+            <div class="lang"><b>SK</b><span>LED panel 600 × 600 mm – 40 W, neutrálna biela</span></div>
+            <div class="lang"><b>PL</b><span>Panel LED 600×600 40W 4000K do sufitu podwieszanego</span></div>
+          </div>
+        </div>
       </div>
-      <div class="steps mono">Prompty <b>01</b> <b>02</b> <b>07</b></div>
-      <dl class="out">
-        <div><dt>Název</dt><dd><strong>LED panel 600 × 600 mm – 40 W, neutrální bílá 4000 K</strong></dd></div>
-        <div><dt>Popis</dt><dd>Podhledové svítidlo do kanceláří a chodeb s bílým rámem. Zdroj je součástí balení.</dd></div>
-        <div><dt>Parametry</dt><dd><ul><li>Rozměr pro rastrový podhled</li><li>Krytí IP20, suché vnitřní prostory</li></ul></dd></div>
-        <div><dt>SK</dt><dd>LED panel 600 × 600 mm – 40 W, neutrálna biela</dd></div>
-        <div><dt>PL</dt><dd>Panel LED 600×600 40W 4000K do sufitu podwieszanego</dd></div>
-      </dl>
-    </figure>
+      <div class="float f1"><span class="ic"><svg><use href="#i-check"/></svg></span><span>Připraveno k importu<small>Shoptet · BaseLinker</small></span></div>
+      <div class="float f2"><span class="ic"><svg><use href="#i-globe"/></svg></span><span>3 jazyky za 1 minutu<small>bez ručního přepisu</small></span></div>
+    </div>
   </div>
 </section>
 
-<section class="facts" aria-label="V číslech">
-  <div class="wrap">
-    <div class="fact"><b>15</b><span>promptů na celý produktový workflow</span></div>
-    <div class="fact"><b>3 trhy</b><span>CZ, SK a PL včetně Allegra</span></div>
-    <div class="fact"><b>1 pravidlo</b><span>AI nesmí nic doplnit ani vymyslet</span></div>
-    <div class="fact"><b>0 Kč</b><span>PDF ke stažení hned po vyplnění</span></div>
-  </div>
-</section>
+<div class="strip"><div class="wrap"><span>Postaveno na praxi z provozu na</span><b>Shoptet</b><b>BaseLinker</b><b>Allegro</b><b>Heureka</b></div></div>
 
 <section class="sec">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="kicker">Proč to funguje</span>
+      <h2>AI, které můžete svěřit katalog</h2>
+      <p class="sub">Obecné prompty z internetu vymýšlejí parametry a píšou marketingovou vatu. Tyhle jsou nastavené na provoz e-shopu.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ic"><svg><use href="#i-shield"/></svg></div><h3>Nic si nevymyslí</h3><p>Každý prompt má pravidlo „jen údaje ze vstupu“. Žádné smyšlené parametry, žádné reklamace.</p></div>
+      <div class="card"><div class="ic"><svg><use href="#i-import"/></svg></div><h3>Hotové pro import</h3><p>Výstupy v HTML a CSV, které jdou rovnou do Shoptetu nebo BaseLinkeru. Bez ručního formátování.</p></div>
+      <div class="card"><div class="ic"><svg><use href="#i-globe"/></svg></div><h3>CZ, SK i PL</h3><p>Překlady s glosářem a názvy podle logiky Allegra. Plus kontrolní prompt, který chyby najde za vás.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="obsah">
   <div class="wrap">
     <div class="sec-head">
-      <div>
-        <span class="mono">Obsah PDF</span>
-        <h2>Každý krok od feedu <span class="serif">po import.</span></h2>
-      </div>
-      <p>Každý prompt má pravidla, která AI brání vymýšlet parametry. U každého je napsané, kdy ho použít, a místa pro vaše data.</p>
+      <span class="kicker">Co je v PDF</span>
+      <h2>15 promptů od feedu po import</h2>
     </div>
-    <ol class="index">
-      <li><span class="n">01</span><span class="t">Čistý název produktu z feedu dodavatele</span><span class="tag">Katalog</span></li>
-      <li><span class="n">02</span><span class="t">Krátký popis do výpisu kategorie</span><span class="tag">Katalog</span></li>
-      <li><span class="n">03</span><span class="t">Dlouhý popis v HTML se strukturou</span><span class="tag">Katalog</span></li>
-      <li><span class="n">04</span><span class="t">Tabulka parametrů z chaotického textu</span><span class="tag">Data</span></li>
-      <li><span class="n">05</span><span class="t">SEO title a meta description</span><span class="tag">SEO</span></li>
-      <li><span class="n">06</span><span class="t">Překlad do slovenštiny s glosářem</span><span class="tag">Překlad</span></li>
-      <li><span class="n">07</span><span class="t">Překlad do polštiny pro Allegro</span><span class="tag">Překlad</span></li>
-      <li><span class="n">08</span><span class="t">Kontrola kvality překladu</span><span class="tag">Kontrola</span></li>
-      <li><span class="n">09</span><span class="t">Popis kategorie pro SEO</span><span class="tag">SEO</span></li>
-      <li><span class="n">10</span><span class="t">FAQ z dotazů zákazníků</span><span class="tag">Obsah</span></li>
-      <li><span class="n">11</span><span class="t">Srovnání variant produktu</span><span class="tag">Obsah</span></li>
-      <li><span class="n">12</span><span class="t">Alt texty obrázků</span><span class="tag">SEO</span></li>
-      <li><span class="n">13</span><span class="t">Sjednocení tónu v celém katalogu</span><span class="tag">Katalog</span></li>
-      <li><span class="n">14</span><span class="t">Hromadné zpracování přes CSV</span><span class="tag">Hromadně</span></li>
-      <li><span class="n">15</span><span class="t">Kontrolní checklist před importem</span><span class="tag">Kontrola</span></li>
-    </ol>
+    <div class="groups">
+      <div class="group g1"><span class="label">Katalog a data</span><ol>
+        <li><span>01</span>Čistý název z feedu dodavatele</li>
+        <li><span>02</span>Krátký popis do kategorie</li>
+        <li><span>03</span>Dlouhý popis v HTML</li>
+        <li><span>04</span>Tabulka parametrů z textu</li>
+      </ol></div>
+      <div class="group g2"><span class="label">SEO a obsah</span><ol>
+        <li><span>05</span>SEO title a meta description</li>
+        <li><span>09</span>Popis kategorie pro SEO</li>
+        <li><span>10</span>FAQ z dotazů zákazníků</li>
+        <li><span>11</span>Srovnání variant produktu</li>
+        <li><span>12</span>Alt texty obrázků</li>
+      </ol></div>
+      <div class="group g3"><span class="label">Překlady</span><ol>
+        <li><span>06</span>Slovenština s glosářem</li>
+        <li><span>07</span>Polština pro Allegro</li>
+        <li><span>08</span>Kontrola kvality překladu</li>
+      </ol></div>
+      <div class="group g4"><span class="label">Kontrola a hromadně</span><ol>
+        <li><span>13</span>Sjednocení tónu katalogu</li>
+        <li><span>14</span>Hromadné zpracování přes CSV</li>
+        <li><span>15</span>Checklist před importem</li>
+      </ol></div>
+    </div>
   </div>
 </section>
 
-<section class="pipe" aria-label="Doporučený postup">
+<section class="sec steps-sec" id="postup">
   <div class="wrap">
-    <span class="mono lbl">Doporučený postup pro nový produkt</span>
-    <ol class="flow">
-      <li>Feed</li><li class="x" aria-hidden="true">→</li>
-      <li><small>01</small>Název</li><li class="x" aria-hidden="true">→</li>
-      <li><small>04</small>Parametry</li><li class="x" aria-hidden="true">→</li>
-      <li><small>02</small><small>03</small>Popisy</li><li class="x" aria-hidden="true">→</li>
-      <li><small>05</small>SEO</li><li class="x" aria-hidden="true">→</li>
-      <li><small>06</small><small>07</small>SK · PL</li><li class="x" aria-hidden="true">→</li>
-      <li><small>08</small>Kontrola</li><li class="x" aria-hidden="true">→</li>
-      <li><small>15</small>Checklist</li><li class="x" aria-hidden="true">→</li>
-      <li class="end">Import</li>
-    </ol>
+    <div class="sec-head center">
+      <span class="kicker">Jak to funguje</span>
+      <h2>Tři kroky k hotovému katalogu</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Vložte data dodavatele</h3><p>Zkopírujte řádek z feedu nebo celé CSV. Prompt má připravená místa pro vaše data.</p></div>
+      <div class="step"><div class="num">2</div><h3>Spusťte prompty v pořadí</h3><p>Název, parametry, popisy, SEO a překlady. Každý krok navazuje na předchozí.</p></div>
+      <div class="step"><div class="num">3</div><h3>Zkontrolujte a importujte</h3><p>Checklist odhalí chyby v číslech a jednotkách. Pak rovnou do e-shopu.</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b class="grad-text">15</b><span>promptů na celý workflow</span></div>
+      <div class="stat"><b class="grad-text">3</b><span>trhy: CZ, SK a PL</span></div>
+      <div class="stat"><b class="grad-text">6</b><span>stran bez vaty</span></div>
+      <div class="stat"><b class="grad-text">0 Kč</b><span>stačí e-mail</span></div>
+    </div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec" id="autor">
   <div class="wrap author">
-    <div>
-      <p class="quote">Neprodávám teorii. Sdílím postupy, které mi v provozu <em>ušetřily stovky hodin.</em></p>
-      <div class="by"><span class="av" aria-hidden="true">MB</span><div><b>Michal Bašta</b><span>provoz e-shopu · Shoptet, BaseLinker, Allegro</span></div></div>
+    <div class="quote-card">
+      <blockquote>„Neprodávám teorii. Sdílím postupy, které mi v provozu e-shopu ušetřily stovky hodin.“</blockquote>
+      <div class="by"><span class="av" aria-hidden="true">MB</span><div><b>Michal Bašta</b><span>provoz e-shopu na Shoptetu, BaseLinkeru a Allegru</span></div></div>
     </div>
     <div class="who">
       <h3>Pro koho to je</h3>
       <p>Pro majitele a správce českých e-shopů s desítkami až tisíci produktů, kteří nechtějí psát každý popis ručně a chystají se prodávat na Slovensko nebo do Polska.</p>
-      <p>AI používám každý den na popisy, překlady, feedy dodavatelů, ceny a sklad.</p>
       <div class="chips"><span>Shoptet</span><span>BaseLinker</span><span>Allegro</span><span>Heureka</span></div>
     </div>
   </div>
 </section>
 
 <section class="optin" id="stahnout">
-  <div class="wrap optin-grid">
-    <div>
-      <span class="mono">PDF zdarma</span>
-      <h2>Stáhni si <span class="serif">15 promptů</span></h2>
-      <ul>
-        <li>Hotové prompty ke zkopírování</li>
-        <li>Pravidla proti vymýšlení parametrů</li>
-        <li>Postup pro hromadné zpracování přes CSV</li>
-        <li>Checklist před importem do e-shopu</li>
-      </ul>
+  <div class="wrap">
+    <div class="optin-card">
+      <div>
+        <span class="kicker">PDF zdarma</span>
+        <h2>Stáhněte si <span class="grad-text">15 promptů</span> ještě dnes</h2>
+        <ul class="benefits">
+          <li><svg><use href="#i-check"/></svg>Hotové prompty ke zkopírování</li>
+          <li><svg><use href="#i-check"/></svg>Pravidla proti vymýšlení parametrů</li>
+          <li><svg><use href="#i-check"/></svg>Hromadné zpracování přes CSV</li>
+          <li><svg><use href="#i-check"/></svg>Checklist před importem</li>
+        </ul>
+      </div>
+      <div class="form">
+        <form id="optin" method="post" action="/api/subscribe" novalidate>
+          <div class="field"><label for="name">Křestní jméno</label><input id="name" name="name" type="text" autocomplete="given-name" maxlength="80" placeholder="Jana"></div>
+          <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="jana@vas-eshop.cz"></div>
+          <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+          <div class="hp" aria-hidden="true"><label for="website">Web</label><input id="website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
+          <label class="check"><input type="checkbox" name="consent" required> <span>Souhlasím se zasíláním e-mailů s tipy a nabídkami produktů AI Operátor od OK ENERGO s.r.o. Odhlásit se lze jedním kliknutím v každém e-mailu. Podrobnosti v&nbsp;<a href="/zasady-ochrany-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</span></label>
+          <button type="submit">Stáhnout PDF zdarma <svg><use href="#i-down"/></svg></button>
+          <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
+          <p class="fine">Žádný spam. Odhlášení jedním kliknutím.</p>
+        </form>
+      </div>
     </div>
-    <form id="optin" method="post" action="/api/subscribe" novalidate>
-      <div class="field">
-        <label for="name">Křestní jméno</label>
-        <input id="name" name="name" type="text" autocomplete="given-name" maxlength="80" placeholder="Jana">
-      </div>
-      <div class="field">
-        <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="jana@vas-eshop.cz">
-      </div>
-      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
-      <div class="hp" aria-hidden="true"><label for="website">Web</label><input id="website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
-      <label class="check"><input type="checkbox" name="consent" required> <span>Souhlasím se zasíláním e-mailů s tipy a nabídkami produktů AI Operátor od OK ENERGO s.r.o. Odhlásit se lze jedním kliknutím v každém e-mailu. Podrobnosti v&nbsp;<a href="/zasady-ochrany-osobnich-udaju.html">zásadách ochrany osobních údajů</a>.</span></label>
-      <button type="submit">Stáhnout PDF <span class="arr" aria-hidden="true">↓</span></button>
-      <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
-    </form>
   </div>
 </section>
 </main>

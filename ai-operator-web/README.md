@@ -10,7 +10,7 @@ Cloudflare Worker (statické assety + API) nad D1 `ai-operator-db`.
 | `GET /api/download?t=<token>` | PDF (`application/pdf`), zapíše řádek do `downloads` |
 | `GET /api/admin/export.csv` | CSV kontaktů; `Authorization: Bearer <ADMIN_TOKEN>` nebo v prohlížeči Basic auth (jméno libovolné, heslo = token) |
 
-Design: Instrument Sans / Instrument Serif / JetBrains Mono (OFL), self-hosted v `public/fonts` – žádné volání Google Fonts.
+Design: Plus Jakarta Sans + JetBrains Mono (OFL), self-hosted v `public/fonts` – žádné volání Google Fonts.
 
 Bezpečnost: CSP bez inline skriptů/stylů, `no-referrer` (token z URL neuteče), honeypot, ochrana proti CSV injection,
 porovnání admin tokenu v konstantním čase, PDF není veřejný asset (je zabalené ve Workeru).
